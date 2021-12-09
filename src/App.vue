@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld :msg="helloMessage" />
+    <HelloWorld :msg="username" />
   </div>
 </template>
 
@@ -20,6 +20,23 @@ export default Vue.extend({
         return this.$store.state.helloMessage;
       },
     },
+    username: {
+      get(): string {
+        return this.$store.getters.getUserName;
+      },
+      set(value: string): void {
+        this.$store.commit("SET_USERNAME", value);
+      },
+    },
+  },
+  mounted() {
+    setTimeout(
+      function (scope) {
+        scope.username = "Hi Bro, SetTimeout is working fine.";
+      },
+      3000,
+      this
+    );
   },
 });
 </script>
