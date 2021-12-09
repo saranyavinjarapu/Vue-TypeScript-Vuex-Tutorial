@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <HelloWorld :msg="helloMessage" />
   </div>
 </template>
 
@@ -13,6 +13,13 @@ export default Vue.extend({
   name: "App",
   components: {
     HelloWorld,
+  },
+  computed: {
+    helloMessage: {
+      get(): string {
+        return this.$store.state.helloMessage;
+      },
+    },
   },
 });
 </script>
